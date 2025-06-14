@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSettings } from '../context/SettingsContext';
 import { useNavigate } from 'react-router-dom';
 
-const OrderHistory = ({ userId }) => {
+const OrderHistory = ({ userId, hideTitle }) => {
   const { user_id: contextUserId, loadingSettings } = useSettings();
   const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
@@ -72,33 +72,36 @@ const OrderHistory = ({ userId }) => {
 
   return (
     <div style={{
-      maxWidth: '100%', // Adjust max-width to fit parent container
-      margin: '0', // Remove auto margin for embedding
-      padding: '0', // Remove padding for embedding
-      backgroundColor: 'transparent', // Transparent background when embedded
-      boxShadow: 'none' // No shadow when embedded
+      maxWidth: '100%',
+      margin: '0',
+      padding: '0',
+      backgroundColor: '#181818',
+      boxShadow: 'none',
+      color: '#fff'
     }}>
-      <h1 style={{ fontSize: '2em', marginBottom: '20px', textAlign: 'center', color: '#333' }}>Your Order History</h1>
+      {!hideTitle && (
+        <h1 style={{ fontSize: '2em', marginBottom: '20px', textAlign: 'center', color: '#C2883A' }}>Your Order History</h1>
+      )}
 
       {orders.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '50px', color: '#666' }}>
+        <div style={{ textAlign: 'center', padding: '50px', color: '#888' }}>
           <p style={{ fontSize: '1.2em', marginBottom: '20px' }}>You haven't placed any orders yet.</p>
         </div>
       ) : (
         <div>
           {orders.map(order => (
-            <div key={order.order_id} style={{ marginBottom: '30px', border: '1px solid #eee', borderRadius: '8px', padding: '20px', boxShadow: '0 1px 5px rgba(0,0,0,0.03)' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px', paddingBottom: '15px', borderBottom: '1px solid #ddd' }}>
-                <h2 style={{ margin: '0', fontSize: '1.4em', color: '#007bff' }}>Order #{order.order_id}</h2>
-                <span style={{ fontSize: '1.1em', fontWeight: 'bold' }}>Total: ${parseFloat(order.total_price).toFixed(2)}</span>
+            <div key={order.order_id} style={{ marginBottom: '30px', border: '1px solid #333', borderRadius: '8px', padding: '20px', boxShadow: '0 1px 5px rgba(0,0,0,0.15)', backgroundColor: '#222' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '15px', paddingBottom: '15px', borderBottom: '1px solid #333' }}>
+                <span style={{ fontSize: '1.1em', fontWeight: 'bold', color: '#C2883A' }}>Order #{order.order_id}</span>
+                <span style={{ fontSize: '1.1em', fontWeight: 'bold', color: '#fff' }}>Total: ${parseFloat(order.total_price).toFixed(2)}</span>
               </div>
-              <p style={{ margin: '0 0 10px 0', color: '#777' }}>Date: {new Date(order.date).toLocaleDateString()} {new Date(order.date).toLocaleTimeString()}</p>
-              <p style={{ margin: '0 0 15px 0', color: '#777' }}>Status: <span style={{ color: order.status === 'pending' ? '#ffc107' : '#28a745', fontWeight: 'bold', textTransform: 'capitalize' }}>{order.status}</span></p>
+              <p style={{ margin: '0 0 10px 0', color: '#888' }}>Date: {new Date(order.date).toLocaleDateString()} {new Date(order.date).toLocaleTimeString()}</p>
+              <p style={{ margin: '0 0 15px 0', color: '#888' }}>Status: <span style={{ color: order.status === 'pending' ? '#ffc107' : '#28a745', fontWeight: 'bold', textTransform: 'capitalize' }}>{order.status}</span></p>
 
-              <h3 style={{ fontSize: '1.2em', marginBottom: '10px', color: '#555' }}>Items:</h3>
+              <h3 style={{ fontSize: '1.2em', marginBottom: '10px', color: '#C2883A' }}>Items:</h3>
               <ul style={{ listStyle: 'none', padding: '0' }}>
                 {(Array.isArray(order.products) ? order.products : []).map(item => (
-                  <li key={item.product_id} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px dashed #f0f0f0' }}>
+                  <li key={item.product_id} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px dashed #333', color: '#fff' }}>
                     <span>{item.name} (x{item.quantity})</span>
                     <span>${(parseFloat(item.price_at_order) * item.quantity).toFixed(2)}</span>
                   </li>

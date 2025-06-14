@@ -121,47 +121,47 @@ const Checkout = () => {
   const total = subtotal + vatAmount;
 
   return (
-    <div style={{ maxWidth: '800px', margin: '20px auto', padding: '20px', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
-      <h1 style={{ fontSize: '2em', marginBottom: '20px', textAlign: 'center', color: '#333' }}>Checkout</h1>
+    <div style={{ maxWidth: '800px', margin: '20px auto', padding: '20px', backgroundColor: '#181818', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.15)', color: '#fff', border: '1px solid #333' }}>
+      <h1 style={{ fontSize: '2em', marginBottom: '20px', textAlign: 'center', color: '#C2883A' }}>Checkout</h1>
 
       {cartItems.length === 0 ? (
-        <p style={{ textAlign: 'center', color: '#666' }}>Redirecting to cart...</p>
+        <p style={{ textAlign: 'center', color: '#888' }}>Redirecting to cart...</p>
       ) : (
         <div>
-          <h2 style={{ fontSize: '1.5em', marginBottom: '15px', color: '#555' }}>Order Summary</h2>
+          <h2 style={{ fontSize: '1.5em', marginBottom: '15px', color: '#C2883A' }}>Order Summary</h2>
           <ul style={{ listStyle: 'none', padding: '0' }}>
             {cartItems.map(item => (
-              <li key={item.product_id} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px dashed #eee' }}>
+              <li key={item.product_id} style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px dashed #333', color: '#fff' }}>
                 <span>{item.name} (x{item.quantity})</span>
                 <span>{formatPrice(parseFloat(item.price) * item.quantity)}</span>
               </li>
             ))}
           </ul>
 
-          <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#f8f9fa', borderRadius: '4px' }}>
+          <div style={{ marginTop: '20px', padding: '15px', backgroundColor: '#222', borderRadius: '4px', border: '1px solid #333' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-              <span>Subtotal:</span>
-              <span>{formatPrice(subtotal)}</span>
+              <span style={{ color: '#fff' }}>Subtotal:</span>
+              <span style={{ color: '#fff' }}>{formatPrice(subtotal)}</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', color: '#666' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px', color: '#C2883A' }}>
               <span>VAT ({vatRate}%):</span>
               <span>{formatPrice(vatAmount)}</span>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.2em', fontWeight: 'bold', borderTop: '1px solid #ddd', paddingTop: '10px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1.2em', fontWeight: 'bold', borderTop: '1px solid #333', paddingTop: '10px', color: '#C2883A' }}>
               <span>Total:</span>
               <span>{formatPrice(total)}</span>
             </div>
           </div>
 
-          <h2 style={{ fontSize: '1.5em', marginTop: '30px', marginBottom: '15px', color: '#555' }}>Payment</h2>
-          <div style={{ border: '1px solid #ddd', padding: '20px', borderRadius: '8px', textAlign: 'center' }}>
-            <p style={{ color: '#777' }}>This is a sandbox payment module. Click to simulate payment.</p>
+          <h2 style={{ fontSize: '1.5em', marginTop: '30px', marginBottom: '15px', color: '#C2883A' }}>Payment</h2>
+          <div style={{ border: '1px solid #333', padding: '20px', borderRadius: '8px', textAlign: 'center', backgroundColor: '#222' }}>
+            <p style={{ color: '#888' }}>This is a sandbox payment module. Click to simulate payment.</p>
             {!paymentSimulated ? (
               <button
                 onClick={handleSimulatePayment}
                 style={{
                   padding: '12px 25px',
-                  backgroundColor: '#007bff',
+                  backgroundColor: '#C2883A',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '5px',
@@ -183,7 +183,7 @@ const Checkout = () => {
             style={{
               width: '100%',
               padding: '15px',
-              backgroundColor: paymentSimulated ? '#28a745' : '#cccccc',
+              backgroundColor: paymentSimulated ? '#C2883A' : '#cccccc',
               color: '#fff',
               border: 'none',
               borderRadius: '5px',

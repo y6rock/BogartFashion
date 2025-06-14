@@ -404,7 +404,7 @@ app.get('/api/settings', async (req, res) => {
       // Initialize default settings if none exist
       const defaultSettings = {
         currency: 'ILS',
-        vat_rate: 17,
+        taxRate: 17,
         id: 1
       };
       await db.query('INSERT INTO settings SET ?', defaultSettings);

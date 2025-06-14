@@ -83,8 +83,8 @@ const Customers = () => {
 
     return (
         <div style={{ flex: 1, padding: '20px' }}>
-            <h1 style={{ fontSize: '2em', marginBottom: '10px' }}>Customers</h1>
-            <p style={{ color: '#666', marginBottom: '20px' }}>Manage your customer database</p>
+            <h1 style={{ fontSize: '2em', marginBottom: '10px', color: '#C2883A' }}>Customers</h1>
+            <p style={{ color: '#888', marginBottom: '20px' }}>Manage your customer database</p>
 
             <div style={{ marginBottom: '20px', position: 'relative' }}>
                 <input
@@ -95,42 +95,44 @@ const Customers = () => {
                     style={{
                         width: '100%',
                         padding: '10px 15px 10px 40px',
-                        border: '1px solid #ddd',
+                        border: '1px solid #444',
                         borderRadius: '5px',
                         fontSize: '1em',
+                        background: '#222',
+                        color: '#fff'
                     }}
                 />
-                <span style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color: '#aaa' }}>
+                <span style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color: '#888' }}>
                     🔍
                 </span>
             </div>
 
             <div style={{ overflowX: 'auto' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: '#181818', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.15)', color: '#fff' }}>
                     <thead>
-                        <tr style={{ borderBottom: '1px solid #eee' }}>
-                            <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Name</th>
-                            <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Email</th>
-                            <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Phone</th>
-                            <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Orders</th>
-                            <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Total Spent</th>
-                            <th style={{ padding: '15px', textAlign: 'center', color: '#555' }}>Actions</th>
+                        <tr style={{ borderBottom: '1px solid #333' }}>
+                            <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Name</th>
+                            <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Email</th>
+                            <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Phone</th>
+                            <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Orders</th>
+                            <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Total Spent</th>
+                            <th style={{ padding: '15px', textAlign: 'center', color: '#C2883A' }}>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {filteredCustomers.map((customer) => (
-                            <tr key={customer.user_id} style={{ borderBottom: '1px solid #eee' }}>
-                                <td style={{ padding: '15px' }}>{customer.username}</td>
-                                <td style={{ padding: '15px' }}>{customer.email}</td>
-                                <td style={{ padding: '15px' }}>{customer.phone || 'N/A'}</td>
-                                <td style={{ padding: '15px' }}>{customer.order_count}</td>
-                                <td style={{ padding: '15px' }}>${parseFloat(customer.total_spent).toFixed(2)}</td>
+                            <tr key={customer.user_id} style={{ borderBottom: '1px solid #333' }}>
+                                <td style={{ padding: '15px', color: '#fff' }}>{customer.username}</td>
+                                <td style={{ padding: '15px', color: '#fff' }}>{customer.email}</td>
+                                <td style={{ padding: '15px', color: '#fff' }}>{customer.phone || 'N/A'}</td>
+                                <td style={{ padding: '15px', color: '#fff' }}>{customer.order_count}</td>
+                                <td style={{ padding: '15px', color: '#fff' }}>${parseFloat(customer.total_spent).toFixed(2)}</td>
                                 <td style={{ padding: '15px', textAlign: 'center' }}>
                                     <button
                                         onClick={() => handleViewOrders(customer)}
                                         style={{
                                             padding: '8px 12px',
-                                            backgroundColor: '#007bff',
+                                            backgroundColor: '#C2883A',
                                             color: '#fff',
                                             border: 'none',
                                             borderRadius: '5px',
@@ -166,16 +168,17 @@ const Customers = () => {
                     zIndex: 1000
                 }}>
                     <div style={{
-                        backgroundColor: '#fff',
+                        backgroundColor: '#181818',
                         padding: '20px',
                         borderRadius: '8px',
                         width: '80%',
                         maxWidth: '800px',
                         maxHeight: '80vh',
-                        overflowY: 'auto'
+                        overflowY: 'auto',
+                        border: '1px solid #333'
                     }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                            <h2 style={{ margin: 0 }}>Orders for {selectedCustomer.username}</h2>
+                            <h2 style={{ margin: 0, color: '#C2883A' }}>Orders for {selectedCustomer.username}</h2>
                             <button
                                 onClick={() => setShowOrdersModal(false)}
                                 style={{
@@ -192,24 +195,25 @@ const Customers = () => {
                         </div>
                         
                         {customerOrders.length === 0 ? (
-                            <p style={{ textAlign: 'center', color: '#666' }}>No orders found for this customer.</p>
+                            <p style={{ textAlign: 'center', color: '#888' }}>No orders found for this customer.</p>
                         ) : (
                             <div>
                                 {customerOrders.map(order => (
                                     <div key={order.order_id} style={{
-                                        border: '1px solid #eee',
+                                        border: '1px solid #333',
                                         borderRadius: '8px',
                                         padding: '15px',
-                                        marginBottom: '15px'
+                                        marginBottom: '15px',
+                                        backgroundColor: '#222'
                                     }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                                            <h3 style={{ margin: 0 }}>Order #{order.order_id}</h3>
-                                            <span style={{ fontWeight: 'bold' }}>${parseFloat(order.total_price).toFixed(2)}</span>
+                                            <h3 style={{ margin: 0, color: '#C2883A' }}>Order #{order.order_id}</h3>
+                                            <span style={{ fontWeight: 'bold', color: '#fff' }}>${parseFloat(order.total_price).toFixed(2)}</span>
                                         </div>
-                                        <p style={{ margin: '5px 0', color: '#666' }}>
+                                        <p style={{ margin: '5px 0', color: '#888' }}>
                                             Date: {new Date(order.order_date).toLocaleDateString()}
                                         </p>
-                                        <p style={{ margin: '5px 0', color: '#666' }}>
+                                        <p style={{ margin: '5px 0', color: '#888' }}>
                                             Status: <span style={{
                                                 color: order.status === 'pending' ? '#ffc107' : '#28a745',
                                                 fontWeight: 'bold',

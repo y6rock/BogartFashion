@@ -193,36 +193,36 @@ export default function Dashboard() {
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
       <div style={{ flex: 1, padding: '20px' }}>
-        <h2>Dashboard</h2>
-        <p style={{ color: '#666', marginTop: '5px' }}>Overview of your store's performance</p>
+        <h2 style={{ color: '#C2883A' }}>Dashboard</h2>
+        <p style={{ color: '#888', marginTop: '5px' }}>Overview of your store's performance</p>
 
         <div style={{ display: 'flex', gap: '30px', marginBottom: '30px' }}>
-          <div style={{ flex: 1, background: '#fff', borderRadius: '8px', padding: '30px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <h3 style={{ color: '#222', marginBottom: '10px' }}>Total Revenue</h3>
-            <div style={{ fontSize: '2em', fontWeight: 'bold', color: '#222' }}>{formatPrice(stats.total_revenue)}</div>
+          <div style={{ flex: 1, background: '#181818', borderRadius: '8px', padding: '30px', boxShadow: '0 2px 8px rgba(0,0,0,0.15)', border: '1px solid #333' }}>
+            <h3 style={{ color: '#C2883A', marginBottom: '10px' }}>Total Revenue</h3>
+            <div style={{ fontSize: '2em', fontWeight: 'bold', color: '#fff' }}>{formatPrice(stats.total_revenue)}</div>
           </div>
-          <div style={{ flex: 1, background: '#fff', borderRadius: '8px', padding: '30px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <h3 style={{ color: '#222', marginBottom: '10px' }}>Total Orders</h3>
-            <div style={{ fontSize: '2em', fontWeight: 'bold', color: '#222' }}>{stats.total_orders}</div>
+          <div style={{ flex: 1, background: '#181818', borderRadius: '8px', padding: '30px', boxShadow: '0 2px 8px rgba(0,0,0,0.15)', border: '1px solid #333' }}>
+            <h3 style={{ color: '#C2883A', marginBottom: '10px' }}>Total Orders</h3>
+            <div style={{ fontSize: '2em', fontWeight: 'bold', color: '#fff' }}>{stats.total_orders}</div>
           </div>
-          <div style={{ flex: 1, background: '#fff', borderRadius: '8px', padding: '30px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-            <h3 style={{ color: '#222', marginBottom: '10px' }}>Products</h3>
-            <div style={{ fontSize: '2em', fontWeight: 'bold', color: '#222' }}>{stats.total_products}</div>
+          <div style={{ flex: 1, background: '#181818', borderRadius: '8px', padding: '30px', boxShadow: '0 2px 8px rgba(0,0,0,0.15)', border: '1px solid #333' }}>
+            <h3 style={{ color: '#C2883A', marginBottom: '10px' }}>Products</h3>
+            <div style={{ fontSize: '2em', fontWeight: 'bold', color: '#fff' }}>{stats.total_products}</div>
           </div>
         </div>
 
         {/* Charts Section */}
         <div style={{ marginTop: '40px', display: 'grid', gridTemplateColumns: '1fr', gap: '40px' }}>
-          <div style={{ background: '#fff', borderRadius: '8px', padding: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-            <h3>Sales Over Time (Last 30 Days)</h3>
+          <div style={{ background: '#181818', borderRadius: '8px', padding: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.15)', border: '1px solid #333' }}>
+            <h3 style={{ color: '#C2883A' }}>Sales Over Time (Last 30 Days)</h3>
             <Line data={salesLineData} options={salesLineOptions} height={80} />
           </div>
-          <div style={{ background: '#fff', borderRadius: '8px', padding: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-            <h3>Top Selling Products</h3>
+          <div style={{ background: '#181818', borderRadius: '8px', padding: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.15)', border: '1px solid #333' }}>
+            <h3 style={{ color: '#C2883A' }}>Top Selling Products</h3>
             <Bar data={topProductsBarData} options={topProductsBarOptions} height={80} />
           </div>
-          <div style={{ background: '#fff', borderRadius: '8px', padding: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)', maxWidth: 500, margin: '0 auto' }}>
-            <h3>Order Status Distribution</h3>
+          <div style={{ background: '#181818', borderRadius: '8px', padding: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.15)', border: '1px solid #333', maxWidth: 500, margin: '0 auto' }}>
+            <h3 style={{ color: '#C2883A' }}>Order Status Distribution</h3>
             <Pie data={orderStatusPieData} />
           </div>
         </div>

@@ -125,15 +125,15 @@ const Suppliers = () => {
       {error && <p style={{ color: 'red', marginBottom: '15px' }}>{error}</p>}
 
       {/* Add New Supplier Form */}
-      <div style={{ marginBottom: '30px', padding: '20px', border: '1px solid #eee', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)', backgroundColor: '#fff' }}>
-        <h3 style={{ marginTop: '0', marginBottom: '15px' }}>{editingSupplier ? 'Edit Supplier' : 'Add New Supplier'}</h3>
+      <div style={{ marginBottom: '30px', padding: '20px', border: '1px solid #333', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.15)', backgroundColor: '#181818' }}>
+        <h3 style={{ marginTop: '0', marginBottom: '15px', color: '#C2883A' }}>{editingSupplier ? 'Edit Supplier' : 'Add New Supplier'}</h3>
         <form onSubmit={editingSupplier ? handleUpdateSupplier : handleAddSupplier} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <input
             type="text"
             placeholder="Supplier Name"
             value={editingSupplier ? editedSupplierName : newSupplierName}
             onChange={(e) => editingSupplier ? setEditedSupplierName(e.target.value) : setNewSupplierName(e.target.value)}
-            style={{ padding: '10px', border: '1px solid #ddd', borderRadius: '5px' }}
+            style={{ padding: '10px', border: '1px solid #444', borderRadius: '5px', background: '#222', color: '#fff' }}
             required
           />
           <input
@@ -141,10 +141,10 @@ const Suppliers = () => {
             placeholder="Contact Info (e.g., email or phone)"
             value={editingSupplier ? editedSupplierContact : newSupplierContact}
             onChange={(e) => editingSupplier ? setEditedSupplierContact(e.target.value) : setNewSupplierContact(e.target.value)}
-            style={{ padding: '10px', border: '1px solid #ddd', borderRadius: '5px' }}
+            style={{ padding: '10px', border: '1px solid #444', borderRadius: '5px', background: '#222', color: '#fff' }}
             required
           />
-          <button type="submit" style={{ padding: '10px 15px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+          <button type="submit" style={{ padding: '10px 15px', backgroundColor: '#C2883A', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
             {editingSupplier ? 'Update Supplier' : 'Add Supplier'}
           </button>
           {editingSupplier && (
@@ -157,13 +157,13 @@ const Suppliers = () => {
 
       {/* Suppliers List */}
       <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: '#181818', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.15)', color: '#fff' }}>
           <thead>
-            <tr style={{ borderBottom: '1px solid #eee' }}>
-              <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>ID</th>
-              <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Name</th>
-              <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Contact</th>
-              <th style={{ padding: '15px', textAlign: 'center', color: '#555' }}>Actions</th>
+            <tr style={{ borderBottom: '1px solid #333' }}>
+              <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>ID</th>
+              <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Name</th>
+              <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Contact</th>
+              <th style={{ padding: '15px', textAlign: 'center', color: '#C2883A' }}>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -173,12 +173,12 @@ const Suppliers = () => {
               </tr>
             ) : (
               suppliers.map((supplier) => (
-                <tr key={supplier.supplier_id} style={{ borderBottom: '1px solid #eee' }}>
-                  <td style={{ padding: '15px' }}>{supplier.supplier_id}</td>
-                  <td style={{ padding: '15px' }}>{supplier.name}</td>
-                  <td style={{ padding: '15px' }}>{supplier.contact}</td>
+                <tr key={supplier.supplier_id} style={{ borderBottom: '1px solid #333' }}>
+                  <td style={{ padding: '15px', color: '#fff' }}>{supplier.supplier_id}</td>
+                  <td style={{ padding: '15px', color: '#fff' }}>{supplier.name}</td>
+                  <td style={{ padding: '15px', color: '#fff' }}>{supplier.contact}</td>
                   <td style={{ padding: '15px', textAlign: 'center' }}>
-                    <button onClick={() => handleEditSupplier(supplier)} style={{ padding: '8px 12px', backgroundColor: '#ffc107', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', marginRight: '10px' }}>Edit</button>
+                    <button onClick={() => handleEditSupplier(supplier)} style={{ padding: '8px 12px', backgroundColor: '#ffc107', color: '#222', border: 'none', borderRadius: '5px', cursor: 'pointer', marginRight: '10px' }}>Edit</button>
                     <button onClick={() => handleDeleteSupplier(supplier.supplier_id)} style={{ padding: '8px 12px', backgroundColor: '#dc3545', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Delete</button>
                   </td>
                 </tr>

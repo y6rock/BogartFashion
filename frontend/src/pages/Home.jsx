@@ -79,8 +79,8 @@ const Home = () => {
         marginBottom: '40px',
         boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
       }}>
-        <h1 style={{ fontSize: '3.5em', marginBottom: '15px', fontWeight: 'bold', color: '#C2883A' }}>Fashion for Every Story</h1>
-        <p style={{ fontSize: '1.2em', marginBottom: '30px', maxWidth: '600px', margin: '0 auto 30px auto', color: '#fff' }}>Discover the latest trends, timeless classics, and must-have pieces to express your unique style.</p>
+        <h1 style={{ fontSize: '3.5em', marginBottom: '15px', fontWeight: 'bold', color: '#C2883A' }}>Elevate Your Style, Define Your Story</h1>
+        <p style={{ fontSize: '1.2em', marginBottom: '30px', maxWidth: '600px', margin: '0 auto 30px auto', color: '#fff' }}>Step into the world of BogartFashion—where elegance meets individuality and every piece is a statement.</p>
         <Link to="/products" style={{
           display: 'inline-block',
           padding: '12px 30px',

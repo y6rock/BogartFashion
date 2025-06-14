@@ -15,9 +15,6 @@ const About = () => {
         boxShadow: '0 4px 10px rgba(0,0,0,0.1)'
       }}>
         <h1 style={{ fontSize: '2.5em', marginBottom: '10px', fontWeight: 'bold', color: '#C2883A' }}>About BogartFashion</h1>
-        <p style={{ fontSize: '1.1em', maxWidth: '700px', margin: '0 auto', color: '#fff' }}>
-          Welcome to BogartFashion, your destination for premium style and timeless elegance. We curate the latest trends and classic essentials, ensuring every piece reflects sophistication, quality, and innovation in fashion. Discover collections designed to empower your individuality and elevate your wardrobe.
-        </p>
       </section>
 
       {/* Our Story Section */}
@@ -36,10 +33,7 @@ const About = () => {
             </p>
           </div>
           <div style={{ flex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            {/* Replace with a fashion-related image */}
-            <div style={{ width: '320px', height: '220px', background: '#222', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#C2883A', fontSize: '1.2em', fontStyle: 'italic' }}>
-              Fashion Image
-            </div>
+            <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=600&q=80" alt="Fashion" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px', boxShadow: '0 4px 15px rgba(0,0,0,0.1)' }} />
           </div>
         </div>
       </section>

@@ -289,8 +289,8 @@ function ProductManager() {
 
   return (
     <div>
-      <h1 style={{ fontSize: '2em', marginBottom: '10px' }}>Products</h1>
-      <p style={{ color: '#666', marginBottom: '20px' }}>Manage your product catalog</p>
+      <h1 style={{ fontSize: '2em', marginBottom: '10px', color: '#C2883A' }}>Products</h1>
+      <p style={{ color: '#888', marginBottom: '20px' }}>Manage your product catalog</p>
 
       <div style={{ marginBottom: '20px', position: 'relative' }}>
         <input
@@ -301,19 +301,21 @@ function ProductManager() {
           style={{
             width: '100%',
             padding: '10px 15px 10px 40px',
-            border: '1px solid #ddd',
+            border: '1px solid #444',
             borderRadius: '5px',
             fontSize: '1em',
+            background: '#222',
+            color: '#fff'
           }}
         />
-        <span style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color: '#aaa' }}>
+        <span style={{ position: 'absolute', left: '15px', top: '50%', transform: 'translateY(-50%)', color: '#888' }}>
           🔍
         </span>
       </div>
 
       <div style={{ textAlign: 'right', marginBottom: '20px' }}>
         <button
-          style={{ padding: '10px 20px', backgroundColor: '#007bff', color: '#fff', borderRadius: '5px', border: 'none', cursor: 'pointer' }}
+          style={{ padding: '10px 20px', backgroundColor: showAddForm ? '#6c757d' : '#C2883A', color: '#fff', borderRadius: '5px', border: 'none', cursor: 'pointer' }}
           onClick={() => { setShowAddForm(!showAddForm); setEditingProduct(null); setForm({ name: '', description: '', price: '', stock: '', image: '', supplier_id: '', category_id: '' }); setImageFile(null); setImagePreview(''); setMessage(''); }}
         >
           {showAddForm ? 'Cancel' : 'Add New Product'}
@@ -321,29 +323,29 @@ function ProductManager() {
       </div>
 
       {showAddForm && (
-        <div style={{ marginBottom: '30px', padding: '20px', border: '1px solid #eee', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-          <h2>{editingProduct ? 'Edit Product' : 'Add New Product'}</h2>
+        <div style={{ marginBottom: '30px', padding: '20px', border: '1px solid #333', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.15)', backgroundColor: '#181818' }}>
+          <h2 style={{ color: '#C2883A' }}>{editingProduct ? 'Edit Product' : 'Add New Product'}</h2>
           <form onSubmit={editingProduct ? handleUpdateProduct : handleSubmit}>
             <div style={{ marginBottom: '10px' }}>
-              <input name="name" placeholder="name" value={form.name} onChange={handleChange} style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} /> <span style={{color:'red'}}>*</span>
+              <input name="name" placeholder="name" value={form.name} onChange={handleChange} style={{ width: '100%', padding: '8px', border: '1px solid #444', borderRadius: '4px', background: '#222', color: '#fff' }} /> <span style={{color:'red'}}>*</span>
             </div>
             <div style={{ marginBottom: '10px' }}>
-              <input name="description" placeholder="description" value={form.description} onChange={handleChange} style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} /> <span style={{color:'red'}}>*</span>
+              <input name="description" placeholder="description" value={form.description} onChange={handleChange} style={{ width: '100%', padding: '8px', border: '1px solid #444', borderRadius: '4px', background: '#222', color: '#fff' }} /> <span style={{color:'red'}}>*</span>
             </div>
             <div style={{ marginBottom: '10px' }}>
-              <input name="price" placeholder="price" type="number" value={form.price} onChange={handleChange} style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} /> <span style={{color:'red'}}>*</span>
+              <input name="price" placeholder="price" type="number" value={form.price} onChange={handleChange} style={{ width: '100%', padding: '8px', border: '1px solid #444', borderRadius: '4px', background: '#222', color: '#fff' }} /> <span style={{color:'red'}}>*</span>
             </div>
             <div style={{ marginBottom: '10px' }}>
-              <input name="stock" placeholder="stock" type="number" value={form.stock} onChange={handleChange} style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} /> <span style={{color:'red'}}>*</span>
+              <input name="stock" placeholder="stock" type="number" value={form.stock} onChange={handleChange} style={{ width: '100%', padding: '8px', border: '1px solid #444', borderRadius: '4px', background: '#222', color: '#fff' }} /> <span style={{color:'red'}}>*</span>
             </div>
             <div style={{ marginBottom: '10px' }}>
-              <label>Image File: <input type="file" accept="image/*" onChange={handleImageFileChange} style={{ border: '1px solid #ddd', padding: '5px', borderRadius: '4px' }} /></label><br />
-              <label>or Image URL: <input name="image" placeholder="Image URL" value={form.image} onChange={handleImageUrlChange} style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }} /></label> <span style={{color:'red'}}>*</span>
+              <label>Image File: <input type="file" accept="image/*" onChange={handleImageFileChange} style={{ border: '1px solid #444', padding: '5px', borderRadius: '4px', background: '#222', color: '#fff' }} /></label><br />
+              <label>or Image URL: <input name="image" placeholder="Image URL" value={form.image} onChange={handleImageUrlChange} style={{ width: '100%', padding: '8px', border: '1px solid #444', borderRadius: '4px', background: '#222', color: '#fff' }} /></label> <span style={{color:'red'}}>*</span>
               {imagePreview && <img src={imagePreview} alt="Preview" style={{ maxWidth: 120, maxHeight: 120, margin: '10px 0' }} />}
             </div>
             <div style={{ marginBottom: '10px' }}>
               <label>Supplier:
-                <select name="supplier_id" value={form.supplier_id} onChange={handleChange} required style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}>
+                <select name="supplier_id" value={form.supplier_id} onChange={handleChange} required style={{ width: '100%', padding: '8px', border: '1px solid #444', borderRadius: '4px', background: '#222', color: '#fff' }}>
                   <option value="">Select supplier</option>
                   {suppliers.map(s => (
                     <option key={s.supplier_id} value={s.supplier_id}>{s.name || s.supplier_id}</option>
@@ -353,7 +355,7 @@ function ProductManager() {
             </div>
             <div style={{ marginBottom: '20px' }}>
               <label>Category:
-                <select name="category_id" value={form.category_id} onChange={handleChange} required style={{ width: '100%', padding: '8px', border: '1px solid #ddd', borderRadius: '4px' }}>
+                <select name="category_id" value={form.category_id} onChange={handleChange} required style={{ width: '100%', padding: '8px', border: '1px solid #444', borderRadius: '4px', background: '#222', color: '#fff' }}>
                   <option value="">Select category</option>
                   {categories.map(c => (
                     <option key={c.category_id} value={c.category_id}>{c.name || c.category_id}</option>
@@ -361,41 +363,44 @@ function ProductManager() {
                 </select>
               </label>
             </div>
-            <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#28a745', color: '#fff', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>Add Product</button>
+            <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#C2883A', color: '#fff', borderRadius: '5px', border: 'none', cursor: 'pointer', marginRight: '10px' }}>{editingProduct ? 'Update Product' : 'Add Product'}</button>
+            {editingProduct && (
+              <button type="button" onClick={() => { setEditingProduct(null); setForm({ name: '', description: '', price: '', stock: '', image: '', supplier_id: '', category_id: '' }); setImageFile(null); setImagePreview(''); setMessage(''); }} style={{ padding: '10px 20px', backgroundColor: '#6c757d', color: '#fff', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>Cancel Edit</button>
+            )}
           </form>
           <p style={{ marginTop: '10px', color: message === 'Product added successfully' ? 'green' : 'red' }}>{message}</p>
         </div>
       )}
 
-      <h3>Products List</h3>
+      <h3 style={{ color: '#C2883A' }}>Products List</h3>
       <div style={{ overflowX: 'auto' }}>
-        <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: '#fff', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
+        <table style={{ width: '100%', borderCollapse: 'collapse', backgroundColor: '#181818', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.15)', color: '#fff' }}>
           <thead>
-            <tr style={{ borderBottom: '1px solid #eee' }}>
-              <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Image</th>
-              <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Name</th>
-              <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Category</th>
-              <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Price</th>
-              <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Inventory</th>
-              <th style={{ padding: '15px', textAlign: 'left', color: '#555' }}>Actions</th>
+            <tr style={{ borderBottom: '1px solid #333' }}>
+              <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Image</th>
+              <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Name</th>
+              <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Category</th>
+              <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Price</th>
+              <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Inventory</th>
+              <th style={{ padding: '15px', textAlign: 'left', color: '#C2883A' }}>Actions</th>
             </tr>
           </thead>
           <tbody>
             {filteredProducts.map(p => (
-              <tr key={p.product_id} style={{ borderBottom: '1px solid #eee' }}>
+              <tr key={p.product_id} style={{ borderBottom: '1px solid #333' }}>
                 <td style={{ padding: '15px' }}>
                   {p.image && <img src={p.image.startsWith('/uploads') ? `http://localhost:3001${p.image}` : p.image} alt={p.name} style={{ width: '50px', height: '50px', objectFit: 'cover', borderRadius: '5px' }} />}
                 </td>
-                <td style={{ padding: '15px' }}>
+                <td style={{ padding: '15px', color: '#fff' }}>
                   {p.name}
                   {p.featured && <span style={{ marginLeft: '5px', color: 'gold' }}>★ Featured</span>}
                 </td>
-                <td style={{ padding: '15px' }}>{categories.find(c => c.category_id === p.category_id)?.name || 'N/A'}</td>
-                <td style={{ padding: '15px' }}>{formatPrice(parseFloat(p.price))}</td>
+                <td style={{ padding: '15px', color: '#fff' }}>{categories.find(c => c.category_id === p.category_id)?.name || 'N/A'}</td>
+                <td style={{ padding: '15px', color: '#fff' }}>{formatPrice(parseFloat(p.price))}</td>
                 <td style={{ padding: '15px', color: p.stock < 10 ? 'orange' : 'green' }}>{p.stock}</td>
                 <td style={{ padding: '15px' }}>
-                  <button onClick={() => handleEditProduct(p)} style={{ background: 'none', border: 'none', cursor: 'pointer', marginRight: '10px' }}>✏️</button>
-                  <button onClick={() => handleDeleteProduct(p.product_id)} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>🗑️</button>
+                  <button onClick={() => handleEditProduct(p)} style={{ background: '#ffc107', color: '#222', border: 'none', borderRadius: '5px', cursor: 'pointer', marginRight: '10px', padding: '8px 12px' }}>Edit</button>
+                  <button onClick={() => handleDeleteProduct(p.product_id)} style={{ background: '#dc3545', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer', padding: '8px 12px' }}>Delete</button>
                 </td>
               </tr>
             ))}

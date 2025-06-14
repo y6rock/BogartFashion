@@ -126,25 +126,29 @@ const ProductsPage = () => {
 
   return (
     <div style={{ maxWidth: '1200px', margin: '20px auto', padding: '0 20px' }}>
-      {/* Hero Section Placeholder */}
+      {/* Hero Section */}
       <div style={{
-        background: 'linear-gradient(to right, #4a90e2, #63b8ff)',
-        color: 'white',
+        background: '#181818',
+        color: '#fff',
         padding: '60px 40px',
         borderRadius: '8px',
         textAlign: 'center',
-        marginBottom: '40px'
+        marginBottom: '40px',
+        boxShadow: '0 2px 10px rgba(0,0,0,0.15)',
+        border: '1px solid #333'
       }}>
-        <h1 style={{ fontSize: '2.5em', marginBottom: '10px' }}>Premium Computers for Work and Play</h1>
-        <p style={{ fontSize: '1.2em', marginBottom: '20px' }}>Discover our extensive range of high-quality products and cutting-edge technology solutions</p>
+        <h1 style={{ fontSize: '2.5em', marginBottom: '10px', color: '#C2883A', fontWeight: 'bold' }}>Discover Your Signature Look</h1>
+        <p style={{ fontSize: '1.2em', marginBottom: '20px', color: '#fff' }}>Explore our curated collection of designer brands, latest trends, and timeless essentials.</p>
         <button style={{
           padding: '12px 30px',
-          backgroundColor: '#ff7043',
+          backgroundColor: '#C2883A',
           color: 'white',
           border: 'none',
           borderRadius: '5px',
           cursor: 'pointer',
-          fontSize: '1.1em'
+          fontSize: '1.1em',
+          fontWeight: 'bold',
+          boxShadow: '0 1px 4px rgba(0,0,0,0.10)'
         }}>Shop Now</button>
       </div>
 
@@ -192,9 +196,9 @@ const ProductsPage = () => {
             </div>
           </div>
 
-          {/* Manufacturer Filter */}
+          {/* Brand Filter */}
           <div style={{ border: '1px solid #eee', padding: '20px', borderRadius: '8px', marginBottom: '20px', boxShadow: '0 2px 4px rgba(0,0,0,0.05)' }}>
-            <h3 style={{ marginTop: '0', marginBottom: '15px' }}>Manufacturer</h3>
+            <h3 style={{ marginTop: '0', marginBottom: '15px' }}>Brand</h3>
             {manufacturers.map(manufacturer => (
               <div key={manufacturer.id} style={{ marginBottom: '10px' }}>
                 <label>
@@ -216,43 +220,45 @@ const ProductsPage = () => {
         <div style={{ flex: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
           {filteredProducts.map(product => (
             <div key={product.product_id} style={{
-              border: '1px solid #eee',
+              border: '1px solid #333',
               borderRadius: '8px',
               padding: '20px',
               textAlign: 'center',
-              boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
-              backgroundColor: 'white'
+              boxShadow: '0 2px 4px rgba(0,0,0,0.15)',
+              backgroundColor: '#222',
+              color: '#fff'
             }}>
-              <div style={{ height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '15px' }}>
+              <div style={{ height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '15px', background: '#181818', borderRadius: '6px' }}>
                 {product.image ? (
                   <img src={product.image.startsWith('/uploads') ? `http://localhost:3001${product.image}` : product.image} alt={product.name} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
                 ) : (
-                  <div style={{ width: '100%', height: '100%', backgroundColor: '#f0f0f0', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#aaa' }}>Product Image</div>
+                  <div style={{ width: '100%', height: '100%', backgroundColor: '#333', display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#aaa' }}>Product Image</div>
                 )}
               </div>
-              <p style={{ color: '#888', fontSize: '0.9em', marginBottom: '5px' }}>{categories.find(c => c.category_id === product.category_id)?.name || 'N/A'}</p>
-              <h3 style={{ fontSize: '1.2em', marginBottom: '5px' }}>{product.name}</h3>
-              <p style={{ fontSize: '1em', color: '#555', marginBottom: '15px' }}>Little Info (One Line)</p>
-              <p style={{ fontSize: '1.4em', fontWeight: 'bold', color: '#333' }}>{formatPrice(parseFloat(product.price))}</p>
+              <p style={{ color: '#C2883A', fontSize: '0.9em', marginBottom: '5px' }}>{categories.find(c => c.category_id === product.category_id)?.name || 'N/A'}</p>
+              <h3 style={{ fontSize: '1.2em', marginBottom: '5px', color: '#fff' }}>{product.name}</h3>
+              <p style={{ fontSize: '1em', color: '#bbb', marginBottom: '15px' }}>Little Info (One Line)</p>
+              <p style={{ fontSize: '1.4em', fontWeight: 'bold', color: '#C2883A' }}>{formatPrice(parseFloat(product.price))}</p>
               <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '15px' }}>
                 <button
                   style={{
                     padding: '10px 15px',
-                    backgroundColor: '#007bff',
+                    backgroundColor: '#C2883A',
                     color: 'white',
                     border: 'none',
                     borderRadius: '5px',
                     cursor: 'pointer',
                     flex: 1,
-                    marginRight: '5px'
+                    marginRight: '5px',
+                    fontWeight: 'bold'
                   }}
                   onClick={() => navigate(`/products/${product.product_id}`)}
                 >For details</button>
                 <button style={{
                   padding: '10px 15px',
-                  backgroundColor: '#ff9800',
-                  color: 'white',
-                  border: 'none',
+                  backgroundColor: '#222',
+                  color: '#C2883A',
+                  border: '1px solid #C2883A',
                   borderRadius: '5px',
                   cursor: 'pointer'
                 }} onClick={() => { console.log('Attempting to add product to cart:', product.name); addToCart(product); }}>
@@ -271,11 +277,11 @@ const ProductsPage = () => {
 
       {/* Pagination Placeholder */}
       <div style={{ textAlign: 'center', marginTop: '30px' }}>
-        <button style={{ padding: '8px 15px', border: '1px solid #ddd', borderRadius: '4px', background: 'none', cursor: 'pointer', marginRight: '5px' }}>← Previous</button>
-        <button style={{ padding: '8px 15px', border: '1px solid #ddd', borderRadius: '4px', background: '#007bff', color: 'white', cursor: 'pointer', marginRight: '5px' }}>1</button>
-        <button style={{ padding: '8px 15px', border: '1px solid #ddd', borderRadius: '4px', background: 'none', cursor: 'pointer', marginRight: '5px' }}>2</button>
-        <button style={{ padding: '8px 15px', border: '1px solid #ddd', borderRadius: '4px', background: 'none', cursor: 'pointer' }}>3</button>
-        <button style={{ padding: '8px 15px', border: '1px solid #ddd', borderRadius: '4px', background: 'none', cursor: 'pointer', marginLeft: '5px' }}>Next →</button>
+        <button style={{ padding: '8px 15px', border: '1px solid #333', borderRadius: '4px', background: '#181818', color: '#888', cursor: 'not-allowed', marginRight: '5px' }} disabled>← Previous</button>
+        <button style={{ padding: '8px 15px', border: '1px solid #C2883A', borderRadius: '4px', background: '#C2883A', color: '#fff', fontWeight: 'bold', marginRight: '5px' }}>1</button>
+        <button style={{ padding: '8px 15px', border: '1px solid #333', borderRadius: '4px', background: '#181818', color: '#fff', marginRight: '5px' }}>2</button>
+        <button style={{ padding: '8px 15px', border: '1px solid #333', borderRadius: '4px', background: '#181818', color: '#fff' }}>3</button>
+        <button style={{ padding: '8px 15px', border: '1px solid #333', borderRadius: '4px', background: '#181818', color: '#888', cursor: 'not-allowed', marginLeft: '5px' }} disabled>Next →</button>
       </div>
     </div>
   );
